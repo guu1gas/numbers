@@ -56,6 +56,15 @@ public class ListAggregatorTest {
 
         Assertions.assertEquals(-1, max);
     }
+    @Test
+    public void distinct_bug_8726() {
+        List<Integer> list = Arrays.asList(1, 2, 4 ,2);
+
+        ListAggregator aggregator = new ListAggregator();
+        int distinct = aggregator.distinct(list);
+
+        Assertions.assertEquals(3, distinct);
+    }
 
     public List helper() {
         List<Integer> helper = Arrays.asList(1, 2, 4, 2, 5);
